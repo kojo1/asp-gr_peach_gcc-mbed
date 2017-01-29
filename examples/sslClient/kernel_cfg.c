@@ -31,12 +31,12 @@ const ID _kernel_tmax_stskid = (TMIN_TSKID + TNUM_STSKID - 1);
 
 static STK_T _kernel_stack_LOGTASK[COUNT_STK_T(LOGTASK_STACK_SIZE)];
 static STK_T _kernel_stack_INIT_MAIN_TASK[COUNT_STK_T(INIT_MAIN_TASK_STACK_SIZE)];
-static STK_T _kernel_stack_HTTP_MAIN_TASK[COUNT_STK_T(HTTP_MAIN_TASK_STACK_SIZE)];
+static STK_T _kernel_stack_SSL_MAIN_TASK[COUNT_STK_T(SSL_MAIN_TASK_STACK_SIZE)];
 
 const TINIB _kernel_tinib_table[TNUM_STSKID] = {
 	{ (TA_ACT), (intptr_t)(LOGTASK_PORTID), ((TASK)(logtask_main)), INT_PRIORITY(LOGTASK_PRIORITY), ROUND_STK_T(LOGTASK_STACK_SIZE), _kernel_stack_LOGTASK, (TA_NULL), (NULL) },
 	{ (TA_ACT), (intptr_t)(0), ((TASK)(init_main_task)), INT_PRIORITY(INIT_MAIN_TASK_PRI), ROUND_STK_T(INIT_MAIN_TASK_STACK_SIZE), _kernel_stack_INIT_MAIN_TASK, (TA_NULL), (NULL) },
-	{ (TA_ACT), (intptr_t)(0), ((TASK)(sslClient_main)), INT_PRIORITY(HTTP_MAIN_TASK_PRI), ROUND_STK_T(HTTP_MAIN_TASK_STACK_SIZE), _kernel_stack_HTTP_MAIN_TASK, (TA_NULL), (NULL) }
+	{ (TA_ACT), (intptr_t)(0), ((TASK)(sslClient_main)), INT_PRIORITY(SSL_MAIN_TASK_PRI), ROUND_STK_T(SSL_MAIN_TASK_STACK_SIZE), _kernel_stack_SSL_MAIN_TASK, (TA_NULL), (NULL) }
 };
 
 TINIB _kernel_atinib_table[20];
@@ -44,7 +44,7 @@ TINIB _kernel_atinib_table[20];
 TCB _kernel_tcb_table[TNUM_TSKID];
 
 const ID _kernel_torder_table[TNUM_STSKID] = {
-	LOGTASK, INIT_MAIN_TASK, HTTP_MAIN_TASK
+	LOGTASK, INIT_MAIN_TASK, SSL_MAIN_TASK
 };
 
 /*
